@@ -1,0 +1,49 @@
+<!-- weather/templates/weather/weather.html -->
+{% extends 'weather/base.html' %}
+
+{% block title %}Weather{% endblock %}
+
+{% block content %}
+<h2>Weather Information</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="city" placeholder="Enter city name" required>
+    <button type="submit">Get Weather</button>
+</form>
+
+<div class="weather-results">
+    {% for weather in weather_data %}
+        <div class="box">
+            <h3>{{ weather.city }}</h3>
+            {% if weather.error %}
+                <p class="error">{{ weather.error }}</p>
+            {% else %}
+                <p>Temperature: {{ weather.temperature }}°C</p>
+                <p>Description: {{ weather.description }}</p>
+                <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Weather Icon">
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+<style>
+    .weather-results {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .box {
+        background: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 10px;
+        width: 30%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .error {
+        color: red;
+    }
+</style>
+{% endblock %}

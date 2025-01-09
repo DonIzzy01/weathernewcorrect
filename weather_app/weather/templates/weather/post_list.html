@@ -1,0 +1,21 @@
+<!-- weather/templates/weather/post_list.html -->
+{% extends 'weather/base.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+<h2 class="text-2xl mb-4">Posts</h2>
+<a href="{% url 'post_create' %}" class="bg-blue-600 text-white px-4 py-2 rounded">Create New Post</a>
+<ul class="mt-4">
+    {% for post in posts %}
+        <li class="bg-white p-4 rounded shadow mb-2">
+            <h3 class="text-lg">{{ post.title }}</h3>
+            <p>{{ post.content }}</p>
+            <a href="{% url 'post_update' post.id %}" class="text-blue-600">Edit</a>
+            <a href="{% url 'post_delete' post.id %}" class="text-red-600">Delete</a>
+        </li>
+    {% empty %}
+        <li>No posts available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

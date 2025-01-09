@@ -1,0 +1,80 @@
+<!-- weather/templates/weather/home.html -->
+{% extends 'weather/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="welcome-section">
+    <h2>Welcome to My Weather App!</h2>
+    <p>Your one-stop solution for checking the weather in your favorite cities.</p>
+    <p>Stay updated with real-time weather information and forecasts.</p>
+</div>
+
+<div class="features-section">
+    <h3>Features</h3>
+    <div class="feature-cards">
+        <div class="card">
+            <h4>Real-Time Weather</h4>
+            <p>Get the latest weather updates for any city around the world.</p>
+        </div>
+        <div class="card">
+            <h4>Forecasts</h4>
+            <p>View the weather forecast for the next few days.</p>
+        </div>
+        <div class="card">
+            <h4>User-Friendly Interface</h4>
+            <p>Enjoy a clean and intuitive interface for easy navigation.</p>
+        </div>
+    </div>
+</div>
+
+<div class="call-to-action">
+    <h3>Get Started!</h3>
+    <p>Register now to start using the app and get personalized weather updates.</p>
+    <a href="{% url 'register' %}" class="cta-button">Register</a>
+</div>
+
+<style>
+    .welcome-section {
+        text-align: center;
+        margin: 20px 0;
+    }
+    .features-section {
+        margin: 40px 0;
+    }
+    .feature-cards {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .card {
+        background: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 10px;
+        width: 30%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+    .card:hover {
+        transform: scale(1.05);
+    }
+    .call-to-action {
+        text-align: center;
+        margin: 40px 0;
+    }
+    .cta-button {
+        background: #35424a;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background 0.3s;
+    }
+    .cta-button:hover {
+        background: #45a049;
+    }
+</style>
+{% endblock %}

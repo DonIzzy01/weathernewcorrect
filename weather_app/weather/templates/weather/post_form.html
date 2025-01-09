@@ -1,0 +1,12 @@
+{% extends 'weather/base.html' %}
+
+{% block title %}Create/Update Post{% endblock %}
+
+{% block content %}
+<h2 class="text-2xl mb-4">{{ form.instance.id|yesno:"Edit Post,Create Post" }}</h2>
+<form method="post" class="bg-white p-4 rounded shadow">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">{{ form.instance.id|yesno:"Update,Create" }}</button>
+</form>
+{% endblock %}
